@@ -3,22 +3,20 @@ let form = new UserForm();
 
 form.loginFormCallback = function(data) {
     ApiConnector.login(data, (response) => {
-        if (response.success === true) {
+        if (response.success) {
             location.reload();
         } else {
-            let message = response.error;
-            form.setLoginErrorMessage(message);
+            form.setLoginErrorMessage(response.error);
         }
     });
 }
 
 form.registerFormCallback = function(data) {
     ApiConnector.register(data, (response) => {        
-        if (response.success === true) {
+        if (response.success) {
             location.reload();
         } else {
-            let message = response.error;
-            form.setRegisterErrorMessage(message);
+            form.setRegisterErrorMessage(response.error);
         }
     });
 }
